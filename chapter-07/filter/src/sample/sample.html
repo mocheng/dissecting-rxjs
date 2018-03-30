@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <body>
+    <div>
+      <button id="sample">Sample</button>
+      <div id="text">0</div>
+    </div>
+    <script src="https://unpkg.com/rxjs@5.5.2/bundles/Rx.min.js"></script>
+    <script>
+const notifer$ = Rx.Observable.fromEvent(document.querySelector('#sample'), 'click');
+const tick$ = Rx.Observable.timer(0, 10).map(x => x*10);
+const sample$ = tick$.sample(notifer$);
+sample$.subscribe(value => {
+  document.querySelector('#text').innerText = value
+});
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=">
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <button id="send">Call API</button>
+    <div id="result"></div>
+    <script src="https://unpkg.com/rxjs@5.5.2/bundles/Rx.min.js"></script>
+    <script>
+const apiUrl = 'https://api.github.com/repos/ReactiveX/rxjs';
+const sendButton = document.querySelector('#send');
+Rx.Observable.fromEvent(sendButton, 'click').mergeMap(() => {
+  return Rx.Observable.ajax(apiUrl);
+}).subscribe(result => {
+  const count = result.response.stargazers_count;
+  document.querySelector('#result').innerText = count;
+});
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <body>
+    <div>
+    </div>
+    <script src="https://unpkg.com/jquery@1.12.4"></script>
+    <script type="text/javascript">
+fetch('https://api.github.com/repos/ReactiveX/rxjs')
+.then((response) => {
+  if (response.status === 200) {
+    return response.json();
+  }
+  throw new Error('Invalid status: ', response.status);
+})
+.catch((error) => {
+  console.log('catch response error: ', error);
+})
+.then((data) => {
+  console.log(data);
+})
+.catch((error) => {
+  console.log('catch data error: ', error);
+})
+
+
+    </script>
+  </body>
+</html>
+

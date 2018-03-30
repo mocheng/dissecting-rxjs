@@ -1,0 +1,22 @@
+{
+  "name": "chapter-02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "dependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "node-fetch": "^2.0.0-alpha.3",
+    "rxjs": "~5.5.2",
+    "symbol-observable": "^1.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "scripts": {
+    "build": "babel src/ -d build/"
+  },
+  "author": "",
+  "license": "ISC"
+}

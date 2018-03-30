@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <body>
+    <script type="text/javascript">
+const req = new XMLHttpRequest();
+req.onload = function(){
+  const data = JSON.parse(this.responseText);
+  console.log(data);
+}
+req.open('get', 'https://api.github.com/repos/ReactiveX/rxjs', true);
+req.send();
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <body>
+    <div>
+      <button id="clickMe">Click Me</button>
+      <div id="text">0</div>
+    </div>
+    <script src="https://unpkg.com/rxjs@5.5.2/bundles/Rx.min.js"></script>
+    <script>
+let clickCount = 0;
+const event$ = Rx.Observable.fromEvent(document.querySelector('#clickMe'), 'click');
+event$.subscribe(
+    () => {
+      document.querySelector('#text').innerText = ++clickCount
+    }
+);
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <body>
+    <div>
+      <button id="getStar">Get RxJS Star Count</button>
+      <div id="text"></div>
+    </div>
+    <script src="https://unpkg.com/rxjs@5.5.2/bundles/Rx.min.js"></script>
+    <script>
+Rx.Observable.fromEvent(
+    document.querySelector('#getStar'),
+    'click'
+).subscribe(
+    () => {
+      Rx.Observable.ajax('https://api.github.com/repos/ReactiveX/rxjs', {responseType: 'json'}).
+        subscribe(value => {
+          const starCount = value.response.stargazers_count;
+          document.querySelector('#text').innerText = starCount;
+        });
+    }
+);
+    </script>
+  </body>
+</html>
+

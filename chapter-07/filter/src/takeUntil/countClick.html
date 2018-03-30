@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <body>
+    <div>
+      <button id="clickMe">Click Me</button>
+      <div id="text">0</div>
+      <div id="end">抓紧时间</div>
+    </div>
+    <script src="https://unpkg.com/rxjs@5.5.2/bundles/Rx.min.js"></script>
+    <script>
+let clickCount = 0;
+const event$ = Rx.Observable.fromEvent(document.querySelector('#clickMe'), 'click');
+const countDown$ = Rx.Observable.timer(5000);
+const filtered$ = event$.takeUntil(countDown$);
+
+const showEnd = () => {
+  document.querySelector('#end').innerText = '时间结束';
+};
+
+const updateCount = () => {
+  document.querySelector('#text').innerText = ++clickCount
+};
+
+countDown$.subscribe(showEnd);
+filtered$.subscribe(updateCount);
+    </script>
+  </body>
+</html>
+
