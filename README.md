@@ -5,3 +5,6 @@
 任何技术问题可以通过[知乎](https://www.zhihu.com/people/morgancheng)私信或者值乎咨询，有问必答。
 
 ![alt text](https://github.com/mocheng/dissecting-rxjs/blob/master/dissect_rxjs.jpg)
+
+如何执行repo里的code：
+ `npm install` 所有的依赖文件后执行 `npx babel-node {your_code_path}`
