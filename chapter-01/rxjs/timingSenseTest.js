@@ -3,7 +3,7 @@ const mouseDown$ = Rx.Observable.fromEvent(holdMeButton, 'mousedown');
 const mouseUp$ = Rx.Observable.fromEvent(holdMeButton, 'mouseup');
 
 const holdTime$ = mouseUp$.timestamp().withLatestFrom(mouseDown$.timestamp(), (mouseUpEvent, mouseDownEvent) => {
-  return mouseUpEvent.timestamp- mouseDownEvent.timestamp;
+  return mouseUpEvent.timestamp - mouseDownEvent.timestamp;
 });
 
 holdTime$.subscribe(ms => {
