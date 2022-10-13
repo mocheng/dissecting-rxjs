@@ -3,13 +3,13 @@ const createKeyup$ = () => {
 }
 
 const searchRepo$ = (key$) => {
-  return key$.debounceTime(150)
+  return key$
     .pluck('target', 'value')
     .map(text => text.trim())
     .filter(query => query.length !== 0)
     .switchMap(query => {
       const url = `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc`;
-      return Rx.Observable.fromPromise(fetchAPI(url));
+      return Rx.Observable.of(url).delay(150).map(() => Rx.Observable.fromPromise(fetchAPI(url))).concatAll();
     });
 };
 
